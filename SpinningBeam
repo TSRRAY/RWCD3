@@ -1,15 +1,23 @@
 local turningSpeed = 1 -- You can change how fast you want the part to spin here
 local beam = script.Parent
 
+-- Most important part! Set the knockback!
+script.Parent.Touched:Connect(function(part)
+	if part.Parent:FindFirstChild("Humanoid") ~= nil then
+		Knockback(script.Parent, part.Parent)
+	end
+end)
+
+function Knockback(KnockbackSource, Player)
+	local BodyVelocity = Instance.new("BodyVelocity")
+	BodyVelocity.MaxForce = Vector3.new(25000, 25000 ,25000)
+	BodyVelocity.Velocity = -(KnockbackSource.Position - Player.HumanoidRootPart.Position).Unit * 50
+	BodyVelocity.Parent = Player.HumanoidRootPart
+	game.Debris:AddItem(BodyVelocity, 0.5)
+end
+
 while true do
 	beam.CFrame = beam.CFrame * CFrame.Angles(0, math.rad(turningSpeed), 0)
 	wait(0.01) -- This determines how often the part turns 
 end
 
--- Most important part! Set the knockback!
-beam.touched:Connect (function(otherPart)
-	local h = otherPart.Parent:FindFirstChild("Humanoid")
-	if h then
-		h.Health = 0
-	end
-end)
