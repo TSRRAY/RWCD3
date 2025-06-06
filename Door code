@@ -33,7 +33,7 @@ end)
 
 open.Completed:Connect(function()
 	for i, part in door.Parent:GetDescendants() do
-		if part:IsA("ProximitPrompt") then
+		if part:IsA("ProximityPrompt") then
 			part.Enabled = true
 			state = "open"
 		end
