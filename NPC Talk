@@ -2,17 +2,7 @@ local ChatService = game:GetService("Chat")
 local head = script.Parent.Head
 local prompt = head.ProximityPrompt
 
-local chatList = {"Hello, I'm Lebron James", "It's out ball!"}
-
---local waypoints = game.Workspace.Waypoints
---local npc = script.Parent:WaitForChild("Humanoid")
-
---while true do
-	--for waypoint = 1, #waypoints:GetChildren() do
-		--npc:MoveTo(waypoints[waypoint].Position)
-		--npc.MoveToFinished:Wait()
-	--end
---end
+local chatList = {"(Place 1st Message)", "(Place 2nd message"}
 
 prompt.Triggered:Connect(function()
 	ChatService:Chat(head, chatList[math.random(1, #chatList)])
